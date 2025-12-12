@@ -1,24 +1,25 @@
 import React from "react";
+import { Nav } from "../styled-component/Nav.js";
 
-export class Nav extends React.Component {
+export class Navigation extends React.Component {
   render() {
     return (
-      <nav>
+      <Nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="#header">Home</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="#about">About</a>
           </li>
           <li>
-            <a href="#">Projects</a>
+            <a href="#slider">Projects</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="#footer">Contact</a>
           </li>
         </ul>
-      </nav>
+      </Nav>
     );
   }
 }

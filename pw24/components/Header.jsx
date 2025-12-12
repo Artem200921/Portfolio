@@ -1,14 +1,17 @@
 import React from "react";
-import { Nav } from "./Global/Navigation.jsx";
+import { HeaderStyle } from "./styled-component/HeaderStyle.js";
+import { Navigation } from "./Global/Navigation.jsx";
 import { Contacts } from "./Global/Contacts.jsx";
 
 export class Header extends React.Component {
   render() {
     return (
-      <header>
-        <Nav />
-        <Contacts />
-      </header>
+      <HeaderStyle id="header" >
+        <div className="container">
+          <Navigation />
+          <Contacts />
+        </div>
+      </HeaderStyle>
     );
   }
 }
