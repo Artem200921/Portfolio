@@ -7,16 +7,17 @@ import * as itemsData from "../dataBase/dataBase.js";
 class App extends React.Component {
   state = {
     slide: 1,
+    view: "main",
   };
 
   selectedSlide = () => {
     const slide = document.getElementById(`item-${this.state.slide}`);
+    if (!slide) return;
     const slides = document.querySelectorAll("li");
     slides.forEach((item) => {
       item.classList.remove("active");
     });
     slide.classList.add("active");
-    console.log(slide);
   };
   nextSlide = () => {
     if (this.state.slide < 5) {
@@ -33,11 +34,19 @@ class App extends React.Component {
     }
   };
   componentDidUpdate() {
-    this.selectedSlide();
+    if (this.state.view === "main") this.selectedSlide();
   }
   componentDidMount() {
-    this.selectedSlide();
+    if (this.state.view === "main") this.selectedSlide();
   }
+
+  openPortfolio = () => {
+    this.setState({ view: "portfolio" });
+  };
+
+  openMain = () => {
+    this.setState({ view: "main" });
+  };
 
   render() {
     console.log(itemsData.default);
@@ -48,6 +57,9 @@ class App extends React.Component {
           items={itemsData.default}
           nextSlide={this.nextSlide}
           prevSlide={this.prevSlide}
+          view={this.state.view}
+          openPortfolio={this.openPortfolio}
+          openMain={this.openMain}
         />
         <Footer />
       </div>
