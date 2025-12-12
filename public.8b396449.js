@@ -17420,16 +17420,17 @@ var _footer = require("../components/Footer");
 var _dataBaseJs = require("../dataBase/dataBase.js");
 class App extends (0, _reactDefault.default).Component {
     state = {
-        slide: 1
+        slide: 1,
+        view: "main"
     };
     selectedSlide = ()=>{
         const slide = document.getElementById(`item-${this.state.slide}`);
+        if (!slide) return;
         const slides = document.querySelectorAll("li");
         slides.forEach((item)=>{
             item.classList.remove("active");
         });
         slide.classList.add("active");
-        console.log(slide);
     };
     nextSlide = ()=>{
         if (this.state.slide < 5) this.setState({
@@ -17448,11 +17449,21 @@ class App extends (0, _reactDefault.default).Component {
         });
     };
     componentDidUpdate() {
-        this.selectedSlide();
+        if (this.state.view === "main") this.selectedSlide();
     }
     componentDidMount() {
-        this.selectedSlide();
+        if (this.state.view === "main") this.selectedSlide();
     }
+    openPortfolio = ()=>{
+        this.setState({
+            view: "portfolio"
+        });
+    };
+    openMain = ()=>{
+        this.setState({
+            view: "main"
+        });
+    };
     render() {
         console.log(_dataBaseJs.default);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -17460,27 +17471,30 @@ class App extends (0, _reactDefault.default).Component {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _header.Header), {}, void 0, false, {
                     fileName: "pw24/src/App.jsx",
-                    lineNumber: 46,
+                    lineNumber: 55,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _main.Main), {
                     items: _dataBaseJs.default,
                     nextSlide: this.nextSlide,
-                    prevSlide: this.prevSlide
+                    prevSlide: this.prevSlide,
+                    view: this.state.view,
+                    openPortfolio: this.openPortfolio,
+                    openMain: this.openMain
                 }, void 0, false, {
                     fileName: "pw24/src/App.jsx",
-                    lineNumber: 47,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footer.Footer), {}, void 0, false, {
                     fileName: "pw24/src/App.jsx",
-                    lineNumber: 52,
+                    lineNumber: 64,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "pw24/src/App.jsx",
-            lineNumber: 45,
+            lineNumber: 54,
             columnNumber: 7
         }, this);
     }
@@ -17552,17 +17566,28 @@ parcelHelpers.export(exports, "HeaderStyle", ()=>HeaderStyle);
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const HeaderStyle = (0, _styledComponentsDefault.default).header`
-  background-color: #333;
-  div {
-    height: 60px;
+  background: linear-gradient(90deg, #c6ab76 0%, #b78f4f 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 72px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 16px;
   }
+
+  a {
+    color: #fff9ea;
+    text-decoration: none;
+    transition: color 0.4s;
+  }
+
+  a:hover { color: #fff; }
 `;
 
 },{"styled-components":"9aFyZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9aFyZ":[function(require,module,exports,__globalThis) {
@@ -19968,15 +19993,22 @@ const Nav = (0, _styledComponentsDefault.default).nav`
   ul {
     display: flex;
     column-gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
   }
 
-  ul a {
-    color: #d5d2d2ff;
+  a {
+    color: #f7f4ef;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.12s, color 0.12s;
+    font-weight: 600;
   }
 
-  ul a:hover {
-    color: #fff;
-  }
+  a:hover { background: rgba(255,255,255,0.06); color: #fff; }
 `;
 
 },{"styled-components":"9aFyZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"7h6Pi":[function(require,module,exports,__globalThis) {
@@ -22327,14 +22359,20 @@ var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const ContactsStyle = (0, _styledComponentsDefault.default).ul`
   display: flex;
   column-gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li { display: flex; align-items:center; }
 
   a {
-    color: #d5d2d2ff;
+    color: #fff9ea;
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 600;
   }
 
-  a:hover {
-    color: #fff;
-  }
+  a:hover { color: #ffffff; }
 `;
 
 },{"styled-components":"9aFyZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5UGRv":[function(require,module,exports,__globalThis) {
@@ -22353,28 +22391,42 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _aboutJsx = require("./Main/About.jsx");
 var _sliderJsx = require("./Main/Slider.jsx");
+var _portfolioJsx = require("./Main/Portfolio.jsx");
 class Main extends (0, _reactDefault.default).Component {
     render() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutJsx.About), {}, void 0, false, {
-                    fileName: "pw24/components/Main.jsx",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sliderJsx.Slider), {
-                    itemsData: this.props.items,
-                    nextSlide: this.props.nextSlide,
-                    prevSlide: this.props.prevSlide
-                }, void 0, false, {
-                    fileName: "pw24/components/Main.jsx",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+            children: this.props.view === "portfolio" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _portfolioJsx.Portfolio), {
+                items: this.props.items,
+                openMain: this.props.openMain
+            }, void 0, false, {
+                fileName: "pw24/components/Main.jsx",
+                lineNumber: 12,
+                columnNumber: 11
+            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutJsx.About), {
+                        delay: "0s"
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main.jsx",
+                        lineNumber: 15,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sliderJsx.Slider), {
+                        delay: "0.4s",
+                        itemsData: this.props.items,
+                        nextSlide: this.props.nextSlide,
+                        prevSlide: this.props.prevSlide,
+                        openPortfolio: this.props.openPortfolio
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main.jsx",
+                        lineNumber: 16,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true)
+        }, void 0, false, {
             fileName: "pw24/components/Main.jsx",
-            lineNumber: 8,
+            lineNumber: 10,
             columnNumber: 7
         }, this);
     }
@@ -22385,7 +22437,7 @@ class Main extends (0, _reactDefault.default).Component {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Main/About.jsx":"khcdm","./Main/Slider.jsx":"1wOzA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"khcdm":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Main/About.jsx":"khcdm","./Main/Slider.jsx":"1wOzA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./Main/Portfolio.jsx":"cyGW2"}],"khcdm":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$4f17 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$4f17.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -22404,24 +22456,31 @@ class About extends (0, _reactDefault.default).Component {
     render() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutStyleJs.AboutStyle), {
             id: "about",
-            className: "container",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    children: "About Me"
-                }, void 0, false, {
-                    fileName: "pw24/components/Main/About.jsx",
-                    lineNumber: 8,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: "Hello! My name is Artem Fedorov, i'm a passionate developer with a love for creating web applications."
-                }, void 0, false, {
-                    fileName: "pw24/components/Main/About.jsx",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+            delay: this.props.delay,
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "container",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: "About Me"
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main/About.jsx",
+                        lineNumber: 9,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: "Hello! My name is Artem Fedorov, i'm a passionate developer with a love for creating web applications."
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main/About.jsx",
+                        lineNumber: 10,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "pw24/components/Main/About.jsx",
+                lineNumber: 8,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
             fileName: "pw24/components/Main/About.jsx",
             lineNumber: 7,
             columnNumber: 7
@@ -22441,18 +22500,44 @@ parcelHelpers.export(exports, "AboutStyle", ()=>AboutStyle);
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const AboutStyle = (0, _styledComponentsDefault.default).section`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  align-items: center;
+  background-color: rgba(193, 166, 114, 1);
+  width: 100%;
+  padding: 60px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: ${(props)=>props.delay || '0s'};
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  }
+
   h1 {
     font-size: 40px;
-    font-weight: bold;
+    font-weight: 800;
     margin-bottom: 10px;
+    color: #2b2b2b;
   }
+
   p {
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2f2f2f;
+    text-align: center;
+    max-width: 820px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 `;
 
@@ -22476,39 +22561,58 @@ class Slider extends (0, _reactDefault.default).Component {
     render() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sliderStyleJs.SliderStyle), {
             id: "slider",
-            className: "container",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: this.props.prevSlide,
-                    children: "\u2190"
-                }, void 0, false, {
-                    fileName: "pw24/components/Main/Slider.jsx",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                    children: this.props.itemsData.map((item, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _slideItemJsx.SlideItem), {
-                            ...item
-                        }, index, false, {
+            delay: this.props.delay,
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "container",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px'
+                        },
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: this.props.prevSlide,
+                            children: "\u2190"
+                        }, void 0, false, {
                             fileName: "pw24/components/Main/Slider.jsx",
-                            lineNumber: 12,
+                            lineNumber: 11,
                             columnNumber: 13
-                        }, this))
-                }, void 0, false, {
-                    fileName: "pw24/components/Main/Slider.jsx",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: this.props.nextSlide,
-                    children: "\u2192"
-                }, void 0, false, {
-                    fileName: "pw24/components/Main/Slider.jsx",
-                    lineNumber: 19,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main/Slider.jsx",
+                        lineNumber: 10,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        children: this.props.itemsData.map((item, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _slideItemJsx.SlideItem), {
+                                openPortfolio: this.props.openPortfolio,
+                                ...item
+                            }, index, false, {
+                                fileName: "pw24/components/Main/Slider.jsx",
+                                lineNumber: 16,
+                                columnNumber: 15
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main/Slider.jsx",
+                        lineNumber: 14,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: this.props.nextSlide,
+                        children: "\u2192"
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main/Slider.jsx",
+                        lineNumber: 20,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "pw24/components/Main/Slider.jsx",
+                lineNumber: 9,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
             fileName: "pw24/components/Main/Slider.jsx",
             lineNumber: 8,
             columnNumber: 7
@@ -22550,20 +22654,29 @@ class SlideItem extends (0, _reactDefault.default).Component {
                                 children: "\u041F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F \u043D\u0430 \u0441\u0430\u0439\u0442"
                             }, void 0, false, {
                                 fileName: "pw24/components/Main/SlideItem.jsx",
-                                lineNumber: 11,
+                                lineNumber: 9,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                 children: this.props.description
                             }, void 0, false, {
                                 fileName: "pw24/components/Main/SlideItem.jsx",
-                                lineNumber: 14,
+                                lineNumber: 12,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: this.props.openPortfolio,
+                                className: "port",
+                                children: "\u041F\u043E\u0440\u0442\u0444\u043E\u043B\u0456\u043E"
+                            }, void 0, false, {
+                                fileName: "pw24/components/Main/SlideItem.jsx",
+                                lineNumber: 13,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "pw24/components/Main/SlideItem.jsx",
-                        lineNumber: 10,
+                        lineNumber: 8,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -22573,7 +22686,7 @@ class SlideItem extends (0, _reactDefault.default).Component {
                         height: "100%"
                     }, void 0, false, {
                         fileName: "pw24/components/Main/SlideItem.jsx",
-                        lineNumber: 16,
+                        lineNumber: 15,
                         columnNumber: 11
                     }, this)
                 ]
@@ -22598,68 +22711,330 @@ parcelHelpers.export(exports, "SliderStyle", ()=>SliderStyle);
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const SliderStyle = (0, _styledComponentsDefault.default).section`
-  width: 600px;
-  height: 250px;
-  display: flex;
-  overflow-x: hidden;
-  justify-content: space-between;
-  align-items: center;
-
-  button {
-    width: 30px;
-    height: 30px;
-    font-size: 24px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  ul {
+  padding-bottom: 40px;
+  background-color: rgba(171, 148, 102, 1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: ${(props)=>props.delay || "0s"};
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 520px;
     display: flex;
-    column-gap: 10px;
-    justify-content: center;
+    overflow: hidden;
+    justify-content: space-between;
     align-items: center;
-  }
+    padding: 20px;
+    gap: 25px;
 
-  li {
-    position: relative;
-    display: none;
-    width: 300px;
-    height: 200px;
-  }
-
-  li.active {
-    display: flex;
-  }
-
-  li div {
-    opacity: 0;
-    transition: opacity 0.5s;
-    position: absolute;
-    z-index: 5;
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 300px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    row-gap: 40px;
-  }
-
-  li div p {
-    font-size: 18px;
-    width: 80%;
-    text-align: center;
+    button {
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      background-color: rgba(255, 255, 255, 0.12);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.12s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-  li div a {
-    color: #fff;
+    button:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .left-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      column-gap: 10px;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    li {
+      position: relative;
+      display: none;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    li.active {
+      display: flex;
+      justify-content: center;
+      transform: scale(1.02);
+    }
+
+    li div {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      position: absolute;
+      z-index: 5;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      row-gap: 40px;
+    }
+
+    li div p {
+      font-size: 18px;
+      width: 80%;
+      text-align: center;
+    }
+
+    li div a {
+      color: #fff;
+    }
+
+    li:hover div {
+      opacity: 1;
+    }
+
+    li div button.port {
+      width: fit-content;
+      padding: 8px 16px;
+      color: #fff;
+    }
   }
 
-  li:hover div {
-    opacity: 1;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+},{"styled-components":"9aFyZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cyGW2":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$700b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$700b.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$700b.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Portfolio", ()=>Portfolio);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _portfolioStyleJs = require("../styled-component/PortfolioStyle.js");
+class Portfolio extends (0, _reactDefault.default).Component {
+    render() {
+        const items = this.props.items || [];
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _portfolioStyleJs.PortfolioStyle), {
+            id: "portfolio",
+            delay: this.props.delay,
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "container",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            maxWidth: 1000,
+                            padding: '0 20px'
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: "Portfolio"
+                            }, void 0, false, {
+                                fileName: "pw24/components/Main/Portfolio.jsx",
+                                lineNumber: 11,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    onClick: this.props.openMain,
+                                    children: "\u041D\u0430\u0437\u0430\u0434"
+                                }, void 0, false, {
+                                    fileName: "pw24/components/Main/Portfolio.jsx",
+                                    lineNumber: 13,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "pw24/components/Main/Portfolio.jsx",
+                                lineNumber: 12,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "pw24/components/Main/Portfolio.jsx",
+                        lineNumber: 10,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "cards",
+                        children: items.map((it, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "card",
+                                children: [
+                                    it.img && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                        src: it.img,
+                                        alt: it.description || it.title || 'project'
+                                    }, void 0, false, {
+                                        fileName: "pw24/components/Main/Portfolio.jsx",
+                                        lineNumber: 20,
+                                        columnNumber: 28
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "card-body",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                                children: it.title || `\u{41F}\u{440}\u{43E}\u{435}\u{43A}\u{442} ${idx + 1}`
+                                            }, void 0, false, {
+                                                fileName: "pw24/components/Main/Portfolio.jsx",
+                                                lineNumber: 22,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                children: it.description || ''
+                                            }, void 0, false, {
+                                                fileName: "pw24/components/Main/Portfolio.jsx",
+                                                lineNumber: 23,
+                                                columnNumber: 19
+                                            }, this),
+                                            it.url && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                                href: it.url,
+                                                target: "_blank",
+                                                rel: "noreferrer",
+                                                children: "\u041F\u0435\u0440\u0435\u0433\u043B\u044F\u043D\u0443\u0442\u0438"
+                                            }, void 0, false, {
+                                                fileName: "pw24/components/Main/Portfolio.jsx",
+                                                lineNumber: 25,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "pw24/components/Main/Portfolio.jsx",
+                                        lineNumber: 21,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, it.id || idx, true, {
+                                fileName: "pw24/components/Main/Portfolio.jsx",
+                                lineNumber: 19,
+                                columnNumber: 15
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "pw24/components/Main/Portfolio.jsx",
+                        lineNumber: 17,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "pw24/components/Main/Portfolio.jsx",
+                lineNumber: 9,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "pw24/components/Main/Portfolio.jsx",
+            lineNumber: 8,
+            columnNumber: 7
+        }, this);
+    }
+}
+
+  $parcel$ReactRefreshHelpers$700b.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../styled-component/PortfolioStyle.js":"fjgw0"}],"fjgw0":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PortfolioStyle", ()=>PortfolioStyle);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const PortfolioStyle = (0, _styledComponentsDefault.default).section`
+  background-color: rgba(240, 240, 240, 1);
+  padding: 60px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: ${(props)=>props.delay || '0s'};
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); transition: transform 0.18s, box-shadow 0.18s; }
+
+  h2 { margin: 0; color: #2c2c2c; }
+
+  button { background: #b78f4f; color: #fff; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+  button:hover { background: #9c7436; }
+
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card a {
+    color: #1a73e8;
+    text-decoration: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 `;
 
@@ -22724,20 +23099,20 @@ var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const FooterStyle = (0, _styledComponentsDefault.default).footer`
   background-color: #282727ff;
-  div {
-    height: 80px;
+  color: #ddd;
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
-    font-size: 20px;
-
-    font-weight: bold;
-    padding: 0 40px;
-    p {
-      font-size: 10px;
-    }
+    padding: 0 20px;
+    gap: 12px;
   }
+
+  p { font-size: 13px; margin: 0; color: #bdbdbd }
 `;
 
 },{"styled-components":"9aFyZ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9cDMa":[function(require,module,exports,__globalThis) {
@@ -22746,31 +23121,31 @@ parcelHelpers.defineInteropFlag(exports);
 exports.default = [
     {
         id: "item-1",
-        img: "https://i.postimg.cc/ZWj8ykTf/Antools.jpg",
+        img: "https://i.postimg.cc/7Zhqc6KV/Antools.png",
         url: "https://artem200921.github.io/Antools/",
         description: "Antools - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0437 \u0441\u0443\u0447\u0430\u0441\u0442\u043D\u0438\u043C\u0438 \u0456\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\u043C\u0438 \u0434\u043B\u044F \u0440\u043E\u0437\u0440\u043E\u0431\u043D\u0438\u043A\u0456\u0432."
     },
     {
         id: "item-2",
-        img: "https://i.postimg.cc/xXgvbr0t/Bose.jpg",
+        img: "https://i.postimg.cc/2SyCJ60X/Bose.png",
         url: "https://artem200921.github.io/Bose_NC_700/",
         description: "Bose - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u0439\u043E\u043C\u043B\u0435\u043D\u043D\u044F \u0437 \u043D\u0430\u0432\u0443\u0448\u043D\u0438\u043A\u0430\u043C\u0438 Bose NC 700."
     },
     {
         id: "item-3",
-        img: "https://i.postimg.cc/LJvtZdH7/Food-Bootique.jpg",
+        img: "https://i.postimg.cc/sgL3RrLH/Food-Bootique.png",
         url: "https://artem200921.github.io/FoodBoutique/",
         description: "Food Bootique - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043E\u043D\u043B\u0430\u0439\u043D \u0437\u0430\u043C\u043E\u0432\u043B\u0435\u043D\u043D\u044F \u0457\u0436\u0456."
     },
     {
         id: "item-4",
-        img: "https://i.postimg.cc/bZLx2XzB/Sound-Booster.jpg",
+        img: "https://i.postimg.cc/htYKqBY3/Sound-Booster.png",
         url: "https://artem200921.github.io/Final_project/",
         description: "Sound Booster - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u0439\u043E\u043C\u043B\u0435\u043D\u043D\u044F \u0437 \u043D\u0430\u0439\u0431\u043B\u0438\u0436\u0447\u0438\u043C\u0438 \u043C\u0443\u0437\u0438\u0447\u043D\u0438\u043C\u0438 \u043F\u043E\u0434\u0456\u044F\u043C\u0438 \u043F\u043E \u0443\u0441\u044C\u043E\u043C\u0443 \u0441\u0432\u0456\u0442\u0443."
     },
     {
         id: "item-5",
-        img: "https://i.postimg.cc/k2wQtrnT/Web-Studio.jpg",
+        img: "https://i.postimg.cc/N0rBsnqc/Web-Studio.png",
         url: "https://artem200921.github.io/WebStudio-SCSS/",
         description: "Web Studio - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0447\u0430\u0441\u0442\u043D\u043E\u0457 \u043A\u043E\u043C\u043F\u0430\u043D\u0456\u0457, \u0449\u043E \u043D\u0430\u0434\u0430\u0454 \u043F\u043E\u0441\u043B\u0443\u0433\u0438 \u0432\u0435\u0431-\u0440\u043E\u0437\u0440\u043E\u0431\u043A\u0438."
     }
