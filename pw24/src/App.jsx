@@ -2,7 +2,7 @@ import React from "react";
 import { Header } from "../components/Header";
 import { Main } from "../components/Main";
 import { Footer } from "../components/Footer";
-import * as itemsData from "../data/dataBase.js";
+import * as itemsData from "../dataBase/dataBase.js";
 
 class App extends React.Component {
   state = {
