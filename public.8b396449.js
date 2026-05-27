@@ -22437,7 +22437,7 @@ class Main extends (0, _reactDefault.default).Component {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Main/About.jsx":"khcdm","./Main/Slider.jsx":"1wOzA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./Main/Portfolio.jsx":"cyGW2"}],"khcdm":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Main/About.jsx":"khcdm","./Main/Slider.jsx":"1wOzA","./Main/Portfolio.jsx":"cyGW2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"khcdm":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$4f17 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$4f17.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -22968,7 +22968,7 @@ class Portfolio extends (0, _reactDefault.default).Component {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../styled-component/PortfolioStyle.js":"fjgw0"}],"fjgw0":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styled-component/PortfolioStyle.js":"fjgw0","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"fjgw0":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PortfolioStyle", ()=>PortfolioStyle);
