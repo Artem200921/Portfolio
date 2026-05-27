@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SliderStyle = styled.section`
+width: 100%;
   padding-bottom: 40px;
   background-color: rgba(171, 148, 102, 1);
   opacity: 0;

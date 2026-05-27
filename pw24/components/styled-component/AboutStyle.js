@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const AboutStyle = styled.section`
+  display: flex;
+  height:100%;
+  justify-content: center;
+
   background-color: rgba(193, 166, 114, 1);
   width: 100%;
   padding: 60px 0;
@@ -16,6 +20,7 @@ export const AboutStyle = styled.section`
     flex-direction: column;
     padding: 28px;
     align-items: center;
+    justify-content: center;
     background: rgba(255,255,255,0.06);
     border-radius: 12px;
     box-shadow: 0 6px 24px rgba(0,0,0,0.08);

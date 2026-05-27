@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const PortfolioStyle = styled.section`
-  background-color: rgba(240, 240, 240, 1);
   padding: 60px 0;
   opacity: 0;
   transform: translateY(20px);

@@ -7,7 +7,7 @@ import { Portfolio } from "./Main/Portfolio.jsx";
 export class Main extends React.Component {
   render() {
     return (
-      <main>
+      <main style={{ display: "flex", flexDirection: "column", justifyContent: "center", backgroundColor: "rgba(240, 240, 240, 1)", height: "100%" }}>
         {this.props.view === "portfolio" ? (
           <Portfolio items={this.props.items} openMain={this.props.openMain} />
         ) : (
