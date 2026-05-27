@@ -7,10 +7,10 @@ export class SlideItem extends React.Component {
         <li id={this.props.id}>
           <div>
             <a href={this.props.url} target="_blank" rel="noreferrer">
-              Посилання на сайт
+              Link on the website
             </a>
             <p>{this.props.description}</p>
-            <button onClick={this.props.openPortfolio} className="port">Портфоліо</button>
+            <button onClick={this.props.openPortfolio} className="port">Portfolio</button>
           </div>
           <img
             src={this.props.img}

@@ -7,11 +7,11 @@ export class Contacts extends React.Component {
       <ContactsStyle>
         <li>
           <a href="mailto:artemfedorov1411@gmail.com">
-            artemfedorov1411@gmail.com
+            artemfedorov1411@gmx.ch
           </a>
         </li>
         <li>
-          <a href="tel:+380996515533">+380 99 651 55 33</a>
+          <a href="tel:+41798910649">+41 79 891 06 49</a>
         </li>
       </ContactsStyle>
     );
