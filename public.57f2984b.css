@@ -17,6 +17,10 @@ body, h1, h2, h3, h4, h5, p, ul, figure {
   padding: 0;
 }
 
+body {
+  height: 100vh;
+}
+
 button {
   border: none;
   outline: none;
@@ -30,5 +34,16 @@ ul, menu {
 .container {
   width: 1200px;
   margin: 0 auto;
+}
+
+.App {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  display: flex;
+}
+
+#root {
+  height: 100%;
 }
 /*# sourceMappingURL=public.57f2984b.css.map */
