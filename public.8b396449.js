@@ -22311,7 +22311,7 @@ class Contacts extends (0, _reactDefault.default).Component {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                         href: "mailto:artemfedorov1411@gmail.com",
-                        children: "artemfedorov1411@gmail.com"
+                        children: "artemfedorov1411@gmx.ch"
                     }, void 0, false, {
                         fileName: "pw24/components/Global/Contacts.jsx",
                         lineNumber: 9,
@@ -22324,8 +22324,8 @@ class Contacts extends (0, _reactDefault.default).Component {
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                        href: "tel:+380996515533",
-                        children: "+380 99 651 55 33"
+                        href: "tel:+41798910649",
+                        children: "+41 79 891 06 49"
                     }, void 0, false, {
                         fileName: "pw24/components/Global/Contacts.jsx",
                         lineNumber: 14,
@@ -22651,7 +22651,7 @@ class SlideItem extends (0, _reactDefault.default).Component {
                                 href: this.props.url,
                                 target: "_blank",
                                 rel: "noreferrer",
-                                children: "\u041F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F \u043D\u0430 \u0441\u0430\u0439\u0442"
+                                children: "Link on the website"
                             }, void 0, false, {
                                 fileName: "pw24/components/Main/SlideItem.jsx",
                                 lineNumber: 9,
@@ -22667,7 +22667,7 @@ class SlideItem extends (0, _reactDefault.default).Component {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 onClick: this.props.openPortfolio,
                                 className: "port",
-                                children: "\u041F\u043E\u0440\u0442\u0444\u043E\u043B\u0456\u043E"
+                                children: "Portfolio"
                             }, void 0, false, {
                                 fileName: "pw24/components/Main/SlideItem.jsx",
                                 lineNumber: 13,
@@ -22875,7 +22875,7 @@ class Portfolio extends (0, _reactDefault.default).Component {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     onClick: this.props.openMain,
-                                    children: "\u041D\u0430\u0437\u0430\u0434"
+                                    children: "Back"
                                 }, void 0, false, {
                                     fileName: "pw24/components/Main/Portfolio.jsx",
                                     lineNumber: 13,
@@ -22909,7 +22909,7 @@ class Portfolio extends (0, _reactDefault.default).Component {
                                         className: "card-body",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                                children: it.title || `\u{41F}\u{440}\u{43E}\u{435}\u{43A}\u{442} ${idx + 1}`
+                                                children: it.title || `Project ${idx + 1}`
                                             }, void 0, false, {
                                                 fileName: "pw24/components/Main/Portfolio.jsx",
                                                 lineNumber: 22,
@@ -22926,7 +22926,7 @@ class Portfolio extends (0, _reactDefault.default).Component {
                                                 href: it.url,
                                                 target: "_blank",
                                                 rel: "noreferrer",
-                                                children: "\u041F\u0435\u0440\u0435\u0433\u043B\u044F\u043D\u0443\u0442\u0438"
+                                                children: "Show Project"
                                             }, void 0, false, {
                                                 fileName: "pw24/components/Main/Portfolio.jsx",
                                                 lineNumber: 25,
@@ -23123,31 +23123,31 @@ exports.default = [
         id: "item-1",
         img: "https://i.postimg.cc/7Zhqc6KV/Antools.png",
         url: "https://artem200921.github.io/Antools/",
-        description: "Antools - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0437 \u0441\u0443\u0447\u0430\u0441\u0442\u043D\u0438\u043C\u0438 \u0456\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\u043C\u0438 \u0434\u043B\u044F \u0440\u043E\u0437\u0440\u043E\u0431\u043D\u0438\u043A\u0456\u0432."
+        description: "Antools - this is a website with modern tools for developers."
     },
     {
         id: "item-2",
         img: "https://i.postimg.cc/2SyCJ60X/Bose.png",
         url: "https://artem200921.github.io/Bose_NC_700/",
-        description: "Bose - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u0439\u043E\u043C\u043B\u0435\u043D\u043D\u044F \u0437 \u043D\u0430\u0432\u0443\u0448\u043D\u0438\u043A\u0430\u043C\u0438 Bose NC 700."
+        description: "Bose - this is a website for learning about Bose NC 700 headphones."
     },
     {
         id: "item-3",
         img: "https://i.postimg.cc/sgL3RrLH/Food-Bootique.png",
         url: "https://artem200921.github.io/FoodBoutique/",
-        description: "Food Bootique - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043E\u043D\u043B\u0430\u0439\u043D \u0437\u0430\u043C\u043E\u0432\u043B\u0435\u043D\u043D\u044F \u0457\u0436\u0456."
+        description: "Food Bootique - this is a website for online food ordering."
     },
     {
         id: "item-4",
         img: "https://i.postimg.cc/htYKqBY3/Sound-Booster.png",
         url: "https://artem200921.github.io/Final_project/",
-        description: "Sound Booster - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u0439\u043E\u043C\u043B\u0435\u043D\u043D\u044F \u0437 \u043D\u0430\u0439\u0431\u043B\u0438\u0436\u0447\u0438\u043C\u0438 \u043C\u0443\u0437\u0438\u0447\u043D\u0438\u043C\u0438 \u043F\u043E\u0434\u0456\u044F\u043C\u0438 \u043F\u043E \u0443\u0441\u044C\u043E\u043C\u0443 \u0441\u0432\u0456\u0442\u0443."
+        description: "Sound Booster - this is a website for learning about the nearest musical events around the world."
     },
     {
         id: "item-5",
         img: "https://i.postimg.cc/N0rBsnqc/Web-Studio.png",
         url: "https://artem200921.github.io/WebStudio-SCSS/",
-        description: "Web Studio - \u0446\u0435 \u0441\u0430\u0439\u0442 \u0447\u0430\u0441\u0442\u043D\u043E\u0457 \u043A\u043E\u043C\u043F\u0430\u043D\u0456\u0457, \u0449\u043E \u043D\u0430\u0434\u0430\u0454 \u043F\u043E\u0441\u043B\u0443\u0433\u0438 \u0432\u0435\u0431-\u0440\u043E\u0437\u0440\u043E\u0431\u043A\u0438."
+        description: "Web Studio - this is a website for a private company that provides web development services."
     }
 ];
 
